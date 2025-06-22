@@ -15,7 +15,10 @@ $routes->resource('api', ['controller' => 'apiController']);
 
 $routes->group('produk', ['filter' => 'auth'], function ($routes) { 
     $routes->get('', 'ProductController::index');
-  
+    $routes->post('', 'ProductController::create');
+    $routes->post('edit/(:any)', 'ProductController::edit/$1');
+    $routes->get('delete/(:any)', 'ProductController::delete/$1');
+    $routes->get('download', 'ProductController::download');
 });
 
 // Route kategori produk diluar group 'produk', jadi URL-nya langsung /ProductCategory
